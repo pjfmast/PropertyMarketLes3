@@ -1,14 +1,18 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Property {
+// todo 1. create abstract class Property and
+// - abstract method getCheckList()
+public abstract class Property {
     private final String address;
-    private final PropertyType propertyType;
+    // todo 2: remove PropertyType:
+//    private final PropertyType propertyType;
     private final int livingArea;
 
-    private Integer priceAsked;
-    private ArrayList<Bid> bidsOnProperty = new ArrayList<>();
+    private final Integer priceAsked;
+    private final ArrayList<Bid> bidsOnProperty = new ArrayList<>();
 
     public boolean doOffer(Customer customer, Integer priceOffered) {
         if (isAccepted(priceOffered)) {
@@ -38,24 +42,27 @@ public class Property {
         }
     }
 
-    public Property(String address, PropertyType propertyType, int livingArea, Integer priceAsked) {
+    // todo: make constructor protected
+    protected Property(String address, int livingArea, Integer priceAsked) {
         this.address = address;
-        this.propertyType = propertyType;
+//        this.propertyType = propertyType;
         this.livingArea = livingArea;
         this.priceAsked = priceAsked;
     }
 
-    public Property(String address, PropertyType propertyType, int livingArea) {
-        this(address, propertyType, livingArea, null);
+    protected Property(String address, int livingArea) {
+        this(address, livingArea, null);
     }
 
     public Integer getPriceAsked() {
         return priceAsked;
     }
 
+    public abstract List<String> getCheckList();
+
     @Override
     public String toString() {
-        String prijsmelding = "";
+        String prijsmelding;
         if (priceAsked == null) {
             prijsmelding = "Prijs op aanvraag";
         } else {
@@ -63,7 +70,6 @@ public class Property {
         }
         return "Home for sale:\n" +
                 "at location: '" + address + '\'' +
-                ", propertyType='" + propertyType + '\'' +
                 ", livingArea=" + livingArea +
                 ", priceAsked=" + prijsmelding;
     }
