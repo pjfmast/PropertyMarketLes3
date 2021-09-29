@@ -16,6 +16,9 @@ public class MainMarket {
         Property p3 = new Garage("Made", 50, 25000, true);
         Property p4 = new Apartment("Breda", 160, 250000, 99, 3);
 
+        System.out.println("checkList garage:");
+        p3.printCheckList();
+
         PropertyMarket mijnMarktplaats = new PropertyMarket();
         mijnMarktplaats.addProperties(p1, p2, p3, p4);
 

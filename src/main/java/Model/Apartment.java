@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Apartment extends Property {
@@ -21,6 +22,10 @@ public class Apartment extends Property {
 
     @Override
     public List<String> getCheckList() {
-        return null;
+        List<String> checkList = new ArrayList<>();
+        checkList.add("Wat zijn de voorwaarden van VVE?");
+        checkList.add("Zijn de financiele reserves van de VVE op orde?");
+
+        return checkList;
     }
 }

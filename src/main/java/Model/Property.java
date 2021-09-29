@@ -60,6 +60,15 @@ public abstract class Property {
 
     public abstract List<String> getCheckList();
 
+    public void printCheckList() {
+        List<String> checkList = getCheckList();
+        int lineNr = 1;
+        for (String check : checkList) {
+            System.out.println(lineNr + ": " + check);
+            lineNr++;
+        }
+    }
+
     @Override
     public String toString() {
         String prijsmelding;

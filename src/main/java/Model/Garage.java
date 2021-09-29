@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Garage extends Property {
@@ -17,6 +18,13 @@ public class Garage extends Property {
 
     @Override
     public List<String> getCheckList() {
-        return null;
+        List<String> checkList = new ArrayList<>();
+        checkList.add("Wat voor type garagepoort?");
+        if (hasElectricty) {
+            checkList.add("Wat voor groepenkast?");
+            checkList.add("Elektrische garagepoort aanwezig?");
+            checkList.add("Is er 3-fase stroom?");
+        }
+        return checkList;
     }
 }
